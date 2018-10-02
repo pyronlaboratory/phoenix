@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class WebService {
+    
 	BASE_URL = `http://localhost:9400/api`;
 	
     constructor(private http: Http) {}

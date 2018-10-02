@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component , ViewChild } from '@angular/core';
 import { MessagesComponent } from './messages.component';
 import { NewMessageComponent } from './new-message.component'
 
@@ -6,17 +6,19 @@ import { NewMessageComponent } from './new-message.component'
   selector: 'app-root',
   template: `
    <h1> Welcome To {{title}} !</h1>
-   
-   <messages></messages>
-
-   <new-message (onPosted)="onPosted($event)"><new-message>
+   <p> {{intro}}</p>
+   <new-message (onPosted)="onPosted($event)"></new-message>
+   <messages></messages>   
   `,
 })
 export class AppComponent {
-  title = 'My Messaging Application';
+
+  title = `Pheonix Messaging Application`;
+  intro = `Pheonix is currently under development. Pheonix uses node servers' in-memory space for data persistence and angular material design at front. Join development at github@ronnielivingsince1994`;
+
   @ViewChild(MessagesComponent) messages : MessagesComponent;
 
   onPosted(message) {
-  	this.messages.messages.push(message);
-  }
+   this.messages.messages.push(message);
+ }
 }

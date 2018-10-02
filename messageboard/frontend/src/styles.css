@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Neucha');
 
-body{
-    background: #eeeeee;
+html, body{
+    background: #4286f4;
+    font-family: 'Neucha', cursive;
 }
 
 .card {

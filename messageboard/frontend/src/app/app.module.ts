@@ -10,9 +10,10 @@ import {FormsModule} from '@angular/forms';
 //Application Component Library
 import { MessagesComponent } from './messages.component';
 import { AppComponent } from './app.component';
-import { WebService } from './web.service';
 import { NewMessageComponent } from './new-message.component';
 
+//Application Service Library
+import { WebService } from './web.service';
 
 @NgModule({
   declarations: [
