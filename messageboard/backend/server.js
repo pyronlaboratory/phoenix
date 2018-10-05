@@ -5,7 +5,7 @@ const app = express()
 
 const messages = [
     {
-        text:`Ali Bomaye! Ali Bomaye! Thank God, that my n***** lived another day!`,
+        text:`Ali Bomaye! Ali Bomaye! Thank God, that my brothers lived another day!`,
         owner: 'The Game'
 },
     {
@@ -23,6 +23,7 @@ api.post('/messages',(req,res)=> {
     messages.push(req.body);
     console.log(req.body);
     res.sendStatus(200);
+    res.json(req.body);
 });
 
 

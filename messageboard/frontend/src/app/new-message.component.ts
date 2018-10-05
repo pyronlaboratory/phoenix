@@ -32,7 +32,6 @@ export class NewMessageComponent {
     
     post() {
         this.webService.postMessage(this.message);
-        this.onPosted.emit(this.message);
     }
 
 }

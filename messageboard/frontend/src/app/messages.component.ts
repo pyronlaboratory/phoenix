@@ -8,16 +8,17 @@ import { WebService } from './web.service'
     `<div>
         <mat-card class="card">
             <mat-card-header>
-                <mat-card-title >{{reference}}</mat-card-title>
+                <mat-card-title>{{reference}}</mat-card-title>
             </mat-card-header>
-                <mat-card-content> Total Messages On Server :: {{messages.length}} 
-                </mat-card-content>
+            <mat-card-content> 
+                Total Messages On Server :: {{webService.messages.length}} 
+            </mat-card-content>
         </mat-card>     
     </div>
     
     <br>
     
-    <div *ngFor="let message of messages">
+    <div *ngFor="let message of webService.messages">
         <mat-card class="card">
             <mat-card-header>
                 <mat-card-title> {{message.owner}} </mat-card-title>
@@ -32,10 +33,4 @@ export class MessagesComponent{
 
     constructor(private webService: WebService){}
 
-    async ngOnInit(){
-       const response = await this.webService.getMessages();
-       this.messages = response.json();
-    }  
-
-    messages = [];
 }
