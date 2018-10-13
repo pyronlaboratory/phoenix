@@ -29,6 +29,10 @@ var routes = [
   {
     path: 'messages',
     component: MessagesComponent
+  },
+  {
+    path: 'messages/:name',
+    component: MessagesComponent
   }
 ];
 
@@ -42,18 +46,18 @@ var routes = [
     HomeComponent
   ],
   imports: [
-        HttpModule,
-        FormsModule,
-        RouterModule.forRoot(routes),
-        MatButtonModule,
-        MatCardModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatToolbarModule,
-        BrowserAnimationsModule,
-        BrowserModule
+    HttpModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    BrowserModule
   ],
-  providers: [WebService],
-  bootstrap: [AppComponent]
+  providers: [ WebService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

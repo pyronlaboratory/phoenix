@@ -11,20 +11,20 @@ export class WebService {
 	messages = [];
 
     constructor(private http: Http, private sb : MatSnackBar) {
-        this.getMessages();
+        this.getMessages(null);
     }
 
 
-    async getMessages() {
-        try {
-            var response = await this.http.get(this.BASE_URL + '/messages').toPromise();
-            this.messages = response.json();
-        } catch (error) {
-            this.handleError("Unable to get messages");
-        }
-
+    getMessages(user) {
+		user = (user) ? '/' + user : '';
+        this.http.get(this.BASE_URL + '/messages' + user).subscribe({ response => {
+				this.messages = response.json();
+			}, error => {
+				this.handleError("Unable to get messages");
+			}
+	    });
     }
-
+    
     async postMessage(message) {
         try {
             var response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
@@ -37,6 +37,6 @@ export class WebService {
 
     private handleError(error) {
         console.error(error);
-        this.sb.open(error, 'close', {duration: 2000});
+        this.sb.open(error, 'close', { duration: 5000 });
     }
 }

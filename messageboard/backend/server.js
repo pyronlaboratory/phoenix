@@ -15,6 +15,15 @@ const messages = [
 
 const api = express.Router();
 
+app.use(bodyParser.json());
+
+app.use((req,res,next) => {
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods", "POST, GET");
+    res.header("Access-Control-Allow-Header","Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 api.get('/messages',(req,res)=> {
     res.json(messages);
 });
@@ -26,14 +35,11 @@ api.post('/messages',(req,res)=> {
     res.json(req.body);
 });
 
+api.get('/messages/:user', (req, res) => {
+    var user = req.params.user;
+    var result = messages.filter(message => message.owner == user);
 
-app.use(bodyParser.json());
-
-app.use((req,res,next) => {
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Methods", "POST, GET");
-    res.header("Access-Control-Allow-Header","Origin, X-Requested-With, Content-Type, Accept");
-    next();
+    res.json(result);
 })
 
 

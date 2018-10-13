@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButtonModule,MatCardModule } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { WebService } from './web.service'
 
 @Component({
@@ -31,6 +32,11 @@ export class MessagesComponent{
 
     reference: string = `Messenger Component`;
 
-    constructor(private webService: WebService){}
+    constructor(private webService: WebService, private route: ActivatedRoute){}
+	
+	ngOnInit(){
+        var name = this.route.snapshot.params.name;
+        this.webService.getMessages(name);
+    }
 
 }
